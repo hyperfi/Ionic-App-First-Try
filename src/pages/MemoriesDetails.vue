@@ -6,27 +6,27 @@
             </ion-card-header>
             <ion-card-content>
                 <p>{{ memory.description }}</p>
+                <ion-img :src="memory.image" alt="Memory Image"></ion-img>
             </ion-card-content>
         </ion-card>
     </base-layout>
 </template>
 
 <script>
-import { IonCard, IonCardHeader, IonCardTitle, IonCardContent } from '@ionic/vue';
+import { IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonImg } from '@ionic/vue';
 export default {
     components: {
         IonCard,
         IonCardHeader,
         IonCardTitle,
         IonCardContent,
+        IonImg
     },
-    data() {
-        return {
-            memory: {
-                title: 'Memory Title',
-                description: 'This is a detailed description of the memory.'
-            }
-        };
+    computed: {
+        memory() {
+            console.log(this.$route.params.id,this.$store.getters.getMemoryById(this.$route.params.id));
+            return this.$store.getters.getMemoryById(this.$route.params.id);
+        }
     },
     methods: {
         goBack() {
