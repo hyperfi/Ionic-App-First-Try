@@ -22,10 +22,15 @@ const store = createStore(
             getMemories: (state) => {
                 return state.memories;
             },
-            getMemoryById: (state) => (id) => {
-                return state.memories.find(memory => memory.id === Number(id));
+            getMemoryById: (state) => {
+                // This is a function that takes an id and returns the memory with that id
+                return (id) => {
+                    return state.memories.find(memory => memory.id === Number(id)) || null;
+                };
             },
         },
+        
+      
  
     }
 )
