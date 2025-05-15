@@ -30,8 +30,39 @@ const store = createStore(
             },
         },
         
-      
- 
+        mutations: {
+            addMemory(state, memory) {
+                state.memories.push(memory);
+            },
+
+            updateMemory(state, memory) {
+                const index = state.memories.findIndex(m => m.id === memory.id);
+                if (index !== -1) {
+                    state.memories[index] = memory;
+                }
+            },
+
+            deleteMemory(state, id) {
+                const index = state.memories.findIndex(m => m.id === id);
+                if (index !== -1) {
+                    state.memories.splice(index, 1);
+                }
+            },
+        },
+
+        actions: {
+            addMemory({ commit }, memory) {
+                commit('addMemory', memory);
+            },
+
+            updateMemory({ commit }, memory) {
+                commit('updateMemory', memory);
+            },
+
+            deleteMemory({ commit }, id) {
+                commit('deleteMemory', id);
+            },
+        },
     }
 )
 

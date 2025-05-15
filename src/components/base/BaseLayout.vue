@@ -8,6 +8,9 @@
         <ion-title>
             {{ title }}
         </ion-title>
+        <ion-buttons slot="end">
+            <slot name="right"></slot>
+        </ion-buttons>
       </ion-toolbar>
     </ion-header>
 
